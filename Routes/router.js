@@ -8,6 +8,7 @@ const router = express.Router();
 
 
 router.get("/isauth", (req, res) => {
+    console.log(req.isAuthenticated());
     res.json({ isAuth: req.isAuthenticated() })
 
 });
