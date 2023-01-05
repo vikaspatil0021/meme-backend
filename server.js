@@ -52,6 +52,8 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.REACT_APP_MONGO_URL, collectionName: "sessions" }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
+        secure:false,
+
     }
 }));
 
