@@ -52,15 +52,13 @@ router.get("/stories/:storyId", async (req, res) => {
 });
 
 router.get("/dash", async (req, res) => {
-    try {
-        const sessionUser = req.session.passport.user;
-        const fUser = await UserInfo.findOne({ username: sessionUser });
-        const dashStories = await StoriesContent.find({ userId: fUser._id })
-        res.status(200).json({ myAccount: fUser, myStories: dashStories });
+    if(req.isAuthenticated()){
 
-    } catch (error) {
-        res.status(404).json({ message: error.message })
+        var sessionUser = req.session.passport.user;
+        var fUser = await UserInfo.findOne({ username: sessionUser });
     }
+    const dashStories = await StoriesContent.find({ userId: fUser._id });
+    res.status(200).json({ myAccount: fUser, myStories: dashStories });
 });
 
 router.get("/comments/:storyId", async (req, res) => {
