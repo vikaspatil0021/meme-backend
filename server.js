@@ -29,7 +29,7 @@ import cors from "cors";
 const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-    origin: "https://my-blog-1230.netlify.app/"
+    origin: "https://my-blog-1230.netlify.app"
 }
 
 mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
