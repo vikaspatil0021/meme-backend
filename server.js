@@ -27,7 +27,7 @@ import { UserInfo } from "./models/model.js"
 
 import cors from "cors";
 const corsOptions = {
-    credentials:true,            //access-control-allow-credentials:true
+    credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
     origin: true
 }
@@ -38,15 +38,17 @@ mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
 
 
 
+app.enable('trust proxy'); // add this line
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("build"));
+app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use(session({
     secret: process.env.REACT_APP_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     store: MongoStore.create({ mongoUrl: process.env.REACT_APP_MONGO_URL, collectionName: "sessions" }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,

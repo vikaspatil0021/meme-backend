@@ -59,6 +59,7 @@ router.get("/dash", async (req, res) => {
     }
     const dashStories = await StoriesContent.find({ userId: fUser._id });
     res.status(200).json({ myAccount: fUser, myStories: dashStories });
+    
 });
 
 router.get("/comments/:storyId", async (req, res) => {
