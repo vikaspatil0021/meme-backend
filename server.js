@@ -27,7 +27,7 @@ import { UserInfo } from "./models/model.js"
 
 import cors from "cors";
 const corsOptions = {
-    credentials: true,            //access-control-allow-credentials:true
+    credentials: "include",            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
     origin: "https://my-blog-1230.netlify.app"
 }
