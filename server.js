@@ -27,7 +27,7 @@ import { UserInfo } from "./models/model.js"
 
 import cors from "cors";
 const corsOptions = {
-    credentials: "include",            //access-control-allow-credentials:true
+    credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
     origin: true
 }
