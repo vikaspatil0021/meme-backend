@@ -41,13 +41,12 @@ mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("build"));
 app.use(cors(corsOptions));
 app.use(session({
     secret: process.env.REACT_APP_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    proxy: true,
     store: MongoStore.create({ mongoUrl: process.env.REACT_APP_MONGO_URL, collectionName: "sessions" }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
@@ -56,7 +55,6 @@ app.use(session({
     }
 }));
 
-app.enable('trust proxy');
 
 
 
