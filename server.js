@@ -29,7 +29,7 @@ import cors from "cors";
 const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-    origin: true
+    origin: "https://my-blog-1230.netlify.app/"
 }
 
 mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
@@ -38,13 +38,13 @@ mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
 
 
 
-app.enable('trust proxy'); // add this line
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use(session({
+    secure:true,
     secret: process.env.REACT_APP_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -57,6 +57,7 @@ app.use(session({
     }
 }));
 
+app.enable('trust proxy');
 
 
 
