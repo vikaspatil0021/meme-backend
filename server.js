@@ -44,7 +44,6 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use(session({
-    secure:true,
     secret: process.env.REACT_APP_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
