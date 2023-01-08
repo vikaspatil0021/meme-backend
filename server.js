@@ -47,13 +47,13 @@ app.use(cors(corsOptions));
 app.use(session({
     secret: process.env.REACT_APP_SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.REACT_APP_MONGO_URL, collectionName: "sessions" }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
         secure:true,
         sameSite:"none",
-        httpOnly:false
+        httpOnly:true
 
     }
 }));
