@@ -81,9 +81,8 @@ router.post("/login", function (req, res) {
         password: req.body.password
     });
     req.login(user, function (err) {
-        const cookie = "samesite=lax; secure;";
+        const cookie = "samesite=none; secure;";
         res.setHeader("set-cookie",[cookie]);
-        res.send("ok");
         if (err) {
             console.log(err);
         } else {
@@ -98,9 +97,8 @@ router.post("/login", function (req, res) {
 router.post("/register", (req, res) => {
     
     UserInfo.register({ username: req.body.username, name: req.body.fullName, email: req.body.email }, req.body.password, (err, user) => {
-        const cookie = "samesite=lax; secure;";
+        const cookie = "samesite=none; secure;";
         res.setHeader("set-cookie",[cookie]);
-        res.send("ok");
 
         if (err) {
             // res.json(err.message)
