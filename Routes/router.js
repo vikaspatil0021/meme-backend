@@ -230,7 +230,7 @@ router.put("/updateLikes", async (req, res) => {
 router.get("/logout", function (req, res) {
     req.logout(function () {
         console.log("logged out");
-        res.redirect("https://my-blog-backend-1ict.onrender.com/stories")
+        res.redirect("https://my-blog-1230.netlify.com/stories")
     });
 
 });
