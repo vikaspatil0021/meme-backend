@@ -39,7 +39,7 @@ mongoose.connect(process.env.REACT_APP_MONGO_URL, { useNewUrlParser: true });
 
 
 
-
+app.set("trust proxy", true);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -53,6 +53,7 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24,
         secure:true,
         sameSite:"none",
+        proxy:false
 
     }
 }));
