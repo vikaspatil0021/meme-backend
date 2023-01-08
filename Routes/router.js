@@ -75,6 +75,8 @@ router.get("/comments/:storyId", async (req, res) => {
 
 
 router.post("/login", function (req, res) {
+    const cookie = "samesite=strict; secure;";
+    res.setHeader("set-cookie",[cookie]);
     const user = new UserInfo({
         username: req.body.username,
         password: req.body.password
@@ -92,6 +94,8 @@ router.post("/login", function (req, res) {
 });
 
 router.post("/register", (req, res) => {
+    const cookie = "samesite=strict; secure;";
+    res.setHeader("set-cookie",[cookie]);
     UserInfo.register({ username: req.body.username, name: req.body.fullName, email: req.body.email }, req.body.password, (err, user) => {
         if (err) {
             // res.json(err.message)
