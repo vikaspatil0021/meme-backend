@@ -75,13 +75,14 @@ router.get("/comments/:storyId", async (req, res) => {
 
 
 router.post("/login", function (req, res) {
-    const cookie = "samesite=strict; secure;";
-    res.setHeader("set-cookie",[cookie]);
+    
     const user = new UserInfo({
         username: req.body.username,
         password: req.body.password
     });
     req.login(user, function (err) {
+        const cookie = "samesite=lax; secure;";
+    res.setHeader("set-cookie",[cookie]);
         if (err) {
             console.log(err);
         } else {
@@ -94,9 +95,10 @@ router.post("/login", function (req, res) {
 });
 
 router.post("/register", (req, res) => {
-    const cookie = "samesite=strict; secure;";
-    res.setHeader("set-cookie",[cookie]);
+    
     UserInfo.register({ username: req.body.username, name: req.body.fullName, email: req.body.email }, req.body.password, (err, user) => {
+        const cookie = "samesite=lax; secure;";
+    res.setHeader("set-cookie",[cookie]);
         if (err) {
             // res.json(err.message)
             console.log(err);
@@ -224,7 +226,7 @@ router.put("/updateLikes", async (req, res) => {
 router.get("/logout", function (req, res) {
     req.logout(function () {
         console.log("logged out");
-        res.redirect("http://localhost:3000/stories")
+        res.redirect("https://my-blog-backend-1ict.onrender.com/stories")
     });
 
 });
