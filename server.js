@@ -30,7 +30,6 @@ const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
     origin: true,
-    "Access-Control-Allow-Credentials": true
 
 }
 
@@ -54,7 +53,7 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.REACT_APP_MONGO_URL, collectionName: "sessions" }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
-        secure:false,
+        secure:true,
 
     }
 }));
