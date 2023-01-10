@@ -201,26 +201,11 @@ router.put("/replyComment", async (req, res) => {
 })
 router.put("/updateLikes", async (req, res) => {
     try {
-        const sessionUser = req.session.passport.user
-        const foundUser = await UserInfo.findOne({ username: sessionUser });
+        
 
         let sentArray = req.body.likesArray;
-        let result = []
-        if (req.body.msg == "add") {
-            if (!sentArray.includes(foundUser._id)) {
-
-                sentArray.push(foundUser._id);
-                result = [...sentArray]
-            }
-        } else if (req.body.msg == "remove") {
-            // if(sentArray.includes(foundUser._id)){
-
-            result = sentArray.filter(function (ele) {
-                return ele != foundUser._id;
-            });
-            // }
-        }
-        await StoriesContent.updateOne({ _id: req.body.storyId }, { likes: result });
+        
+        await StoriesContent.updateOne({ _id: req.body.storyId }, { likes: sentArray });
         res.json("updatedLikes")
     } catch (err) {
         res.json(err)
