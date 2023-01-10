@@ -192,6 +192,7 @@ router.put("/replyComment", async (req, res) => {
 
 
         }
+        res.json("reply comment updated")
 
     } catch (error) {
         res.json(error)
