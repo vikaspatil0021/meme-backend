@@ -51,6 +51,12 @@ router.get("/stories/:storyId", async (req, res) => {
     res.json({ story: foundStory, user: foundUser, sessionUser: (req.isAuthenticated()) ? fUser : "not loggedin" })
 });
 
+router.get("/people/:peopleUsername",async (req,res)=>{
+    const peopleUsername = req.params.peopleUsername;
+    const foundUser = await UserInfo.findOne({ username: peopleUsername });
+    res.json({foundUser:foundUser});
+})
+
 router.get("/dash", async (req, res) => {
     try {
         
