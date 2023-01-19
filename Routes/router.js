@@ -54,7 +54,9 @@ router.get("/stories/:storyId", async (req, res) => {
 router.get("/people/:peopleUsername",async (req,res)=>{
     const peopleUsername = req.params.peopleUsername;
     const foundUser = await UserInfo.findOne({ username: peopleUsername });
-    res.json({foundUser:foundUser});
+    var fStories = await StoriesContent.find({ userId: foundUser._id });
+
+    res.json({foundUser:foundUser,fstories:fStories});
 })
 
 router.get("/dash", async (req, res) => {
