@@ -159,9 +159,14 @@ router.post("/comment", async (req, res) => {
 })
 
 router.delete("/delete", async (req, res) => {
-    await StoriesContent.deleteOne({ _id: req.body.Id });
-    await CommentsContent.deleteMany({ storyId: req.body.Id })
-    res.json("deleted successfully")
+    try {
+        
+        await StoriesContent.deleteOne({ _id: req.body.Id });
+        await CommentsContent.deleteMany({ storyId: req.body.Id })
+        res.json("deleted successfully")
+    } catch (error) {
+        res.json(error.message)
+    }
 })
 
 router.delete("/deletecomment", async (req, res) => {
