@@ -174,6 +174,16 @@ router.delete("/deletecomment", async (req, res) => {
     res.json("deleted comment successfully")
 })
 
+router.put("/profileinfo", async (req, res) => {
+    try {
+
+        await UserInfo.updateOne({ _id: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL});
+        res.json("updated")
+    } catch (err) {
+        res.json(err)
+    }
+})
+
 router.put("/updateStory", async (req, res) => {
     try {
 

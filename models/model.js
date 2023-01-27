@@ -13,7 +13,8 @@ const storiesSchema = mongoose.Schema({
 const userSchema = mongoose.Schema({
     email:String,
     password:String,
-    name:String
+    name:String,
+    profileImgURL:String
 })
 
 const commentSchema = mongoose.Schema({
