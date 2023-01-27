@@ -177,7 +177,7 @@ router.delete("/deletecomment", async (req, res) => {
 router.put("/profileinfo", async (req, res) => {
     try {
 
-        await UserInfo.updateOne({ _id: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL});
+        await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL});
         res.json("updated")
     } catch (err) {
         res.json(err)
