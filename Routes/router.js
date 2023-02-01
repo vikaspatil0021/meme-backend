@@ -97,6 +97,8 @@ router.post("/login", function (req, res) {
     req.login(user, function (err) {
 
         if (err) {
+            res.json(err.message)
+
             console.log(err);
         } else {
             passport.authenticate("local")(req, res, function () {
@@ -112,8 +114,8 @@ router.post("/register", (req, res) => {
     UserInfo.register({ username: req.body.username, name: req.body.fullName, email: req.body.email }, req.body.password, (err, user) => {
     
         if (err) {
-            // res.json(err.message)
-            console.log(err);
+            res.json({msg:err.message})
+            console.log(err.message);
         } else {
             passport.authenticate("local")(req, res, function () {
                 // console.log(req.isAuthenticated());
