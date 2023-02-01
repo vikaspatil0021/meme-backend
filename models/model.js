@@ -14,7 +14,9 @@ const userSchema = mongoose.Schema({
     email:String,
     password:String,
     name:String,
-    profileImgURL:String
+    profileImgURL:String,
+    instaUsername:String,
+    bio:String
 })
 
 const commentSchema = mongoose.Schema({
