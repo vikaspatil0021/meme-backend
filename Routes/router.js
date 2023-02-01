@@ -160,6 +160,16 @@ router.post("/comment", async (req, res) => {
 
 })
 
+router.post("/profileinfo", async (req, res) => {
+    try {
+
+        await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
+        res.json("updated")
+    } catch (err) {
+        res.json(err)
+    }
+})
+
 router.delete("/delete", async (req, res) => {
     try {
         
@@ -176,15 +186,7 @@ router.delete("/deletecomment", async (req, res) => {
     res.json("deleted comment successfully")
 })
 
-router.put("/profileinfo", async (req, res) => {
-    try {
 
-        await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
-        res.json("updated")
-    } catch (err) {
-        res.json(err)
-    }
-})
 
 router.put("/updateStory", async (req, res) => {
     try {
