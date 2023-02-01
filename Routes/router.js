@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 router.get("/isauth", (req, res) => {
-    console.log(req.isAuthenticated());
     res.json({ isAuth: req.isAuthenticated() })
 
 });
@@ -163,7 +162,8 @@ router.post("/comment", async (req, res) => {
 router.post("/profileinfo", async (req, res) => {
     try {
 
-        await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
+        const respo = await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
+        console.log(respo);
         res.json("updated")
     } catch (err) {
         res.json(err)
