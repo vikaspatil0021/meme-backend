@@ -29,10 +29,10 @@ router.get("/stories", async (req, res) => {
 
 router.get("/people", async (req, res) => {
     try {
-        const peopleAll = await UserInfo.find();
+        let peopleAll = await UserInfo.find();
 
-        const peopleArr = peopleAll.map((person)=>{
-            const Memes = StoriesContent.find({username:person.username});
+        let peopleArr = peopleAll.map((person)=>{
+            let Memes = StoriesContent.find({username:person.username});
             return {...person,memeCount:Memes.length};
 
         })
