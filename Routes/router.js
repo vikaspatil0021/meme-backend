@@ -29,14 +29,8 @@ router.get("/stories", async (req, res) => {
 
 router.get("/people", async (req, res) => {
     try {
-        let peopleAll = await UserInfo.find();
-
-        let peopleArr = peopleAll.map((person)=>{
-            // let Memes = StoriesContent.find({username:person.username});
-            return {...person};
-
-        })
-        res.status(200).json(peopleArr);
+        const peopleAll = await UserInfo.find();
+        res.status(200).json(peopleAll);
 
     } catch (error) {
         res.status(404).json({ message: error.message })
