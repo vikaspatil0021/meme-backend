@@ -33,7 +33,7 @@ router.get("/people", async (req, res) => {
 
         let peopleArr = peopleAll.map((person)=>{
             // let Memes = StoriesContent.find({username:person.username});
-            return {...person,memeCount:0};
+            return {...person};
 
         })
         res.status(200).json(peopleArr);
