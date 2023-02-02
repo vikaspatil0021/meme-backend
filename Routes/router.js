@@ -33,15 +33,7 @@ router.get("/people", async (req, res) => {
 
         const peopleArr = peopleAll.map((person)=>{
             const Memes = StoriesContent.find({username:person.username});
-            if(Memes){
-
-                person["memeCount"] = Memes.length;
-            }else{
-                person["memeCount"] = 0;
-
-            }
-            console.log(person);
-            return person;
+            return {...person,memeCount:Memes.length};
 
         })
         res.status(200).json(peopleArr);
