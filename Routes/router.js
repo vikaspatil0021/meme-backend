@@ -30,10 +30,7 @@ router.get("/stories", async (req, res) => {
 router.get("/people", async (req, res) => {
     try {
         const peopleAll = await UserInfo.find();
-        const peopleArr = peopleAll.map((person)=>{
-            return{...person,key:0}
-        });
-        res.status(200).json(peopleArr);
+        res.status(200).json(peopleAll);
 
     } catch (error) {
         res.status(404).json({ message: error.message })
