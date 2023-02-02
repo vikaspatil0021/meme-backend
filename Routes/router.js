@@ -161,8 +161,10 @@ router.post("/comment", async (req, res) => {
 
 router.post("/profileinfo", async (req, res) => {
     try {
+        const sessionUser = req.session.passport.user
 
-        const respo = await UserInfo.updateOne({ username: req.body.username }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
+
+        const respo = await UserInfo.updateOne({ username: sessionUser }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
         console.log(respo);
         res.json("updated")
     } catch (err) {
