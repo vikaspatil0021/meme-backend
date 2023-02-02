@@ -66,8 +66,9 @@ router.get("/dash", async (req, res) => {
             var sessionUser = req.session.passport.user;
             var fUser = await UserInfo.findOne({ username: sessionUser });
             var dashStories = await StoriesContent.find({ userId: fUser._id });
+            var reverseArr = dashStories.reverse()
         }
-        res.status(200).json({ myAccount: fUser, myStories: dashStories });
+        res.status(200).json({ myAccount: fUser, myStories: reverseArr });
     } catch (error) {
         res.status(404).json({ message: error.message })
 
