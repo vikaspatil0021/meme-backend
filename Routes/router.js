@@ -40,6 +40,7 @@ router.get("/people", async (req, res) => {
                 person["memeCount"] = 0;
 
             }
+            console.log(person);
             return person;
 
         })
