@@ -32,8 +32,8 @@ router.get("/people", async (req, res) => {
         let peopleAll = await UserInfo.find();
 
         let peopleArr = peopleAll.map((person)=>{
-            let Memes = StoriesContent.find({username:person.username});
-            return {...person,memeCount:Memes.length};
+            // let Memes = StoriesContent.find({username:person.username});
+            return {...person,memeCount:0};
 
         })
         res.status(200).json(peopleArr);
