@@ -32,7 +32,7 @@ router.get("/people", async (req, res) => {
         const peopleAll = await UserInfo.find();
         const peopleArr = peopleAll.map((person)=>{
             return{...person,key:0}
-        })
+        });
         res.status(200).json(peopleArr);
 
     } catch (error) {
