@@ -89,32 +89,38 @@ router.get("/comments/:storyId", async (req, res) => {
 })
 
 
-router.post("/login", function (req, res) {
+// router.post("/login", function (req, res) {
     
-    const user = new UserInfo({
-        username: req.body.username,
-        password: req.body.password
-    });
-    req.login(user, function (err) {
+//     const user = new UserInfo({
+//         username: req.body.username,
+//         password: req.body.password
+//     });
+//     req.login(user, function (err) {
 
-        if (err) {
-            res.json({msg:err.message})
+//         if (err) {
+//             res.json(err.message)
 
-            console.log(err);
-        } else {
-            passport.authenticate("local",{
-                failureRedirect: "/login"
-              })(req, res, function () {
-                console.log("logged in");
+//             console.log(err);
+//         } else {
+//             passport.authenticate("local")(req, res, function () {
+//                 console.log("logged in");
+//                 res.json({ isAuth: req.isAuthenticated() })
+//             })
+//         }
+//     })
+// });
+
+router.post("/login", passport.authenticate("local",{
+    successRedirect: "/dashboard",
+    failureRedirect: "/login"
+}), function(req, res){
+    console.log("logged in");
                 res.json({ isAuth: req.isAuthenticated() })
-            })
-        }
-    })
 });
 
 router.post("/register", (req, res) => {
     
-    UserInfo.register({ username: req.body.username, name: req.body.fullName, email: req.body.email }, req.body.password, (err, user) => {
+    UserInfo.register({ username: req.body.username,  email: req.body.email }, req.body.password, (err, user) => {
     
         if (err) {
             res.json({msg:err.message})
