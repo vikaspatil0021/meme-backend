@@ -30,7 +30,7 @@ router.get("/stories", async (req, res) => {
 
 const returnMemecount = async(userId)=>{
     let memes = await StoriesContent.find({userId:userId});
-    let m = memes.toObject()
+    let m = JSON.stringify(memes)
     console.log(m,memes);
     return(m.length)
 
