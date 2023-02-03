@@ -27,15 +27,21 @@ router.get("/stories", async (req, res) => {
     }
 });
 
+
+const returnMemecount = async(userId)=>{
+    let memes = await StoriesContent.find({userId:userId});
+    return(memes.length)
+
+}
+
 router.get("/people", async (req, res) => {
     try {
         const peopleAll = await UserInfo.find(); 
         let peopleArr = [];
         for(var i = 0 ; i < peopleAll.length ; i++ ){
+            const memecount = returnMemecount(peopleAll[i]._id);
 
-            let memes = StoriesContent.find({userId:peopleAll[i]._id});
-            console.log(memes);
-            peopleArr.push({...peopleAll[i],"memeCount":memes.length});
+            peopleArr.push({...peopleAll[i],"memeCount":memecount});
         }
         res.status(200).json(peopleArr);
 
