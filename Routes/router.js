@@ -27,25 +27,10 @@ router.get("/stories", async (req, res) => {
     }
 });
 
-
-const returnMemecount = async(userId)=>{
-    let memes = await StoriesContent.find({userId:userId});
-    let m = JSON.stringify(memes)
-    console.log(m,memes);
-    return(m.length)
-
-}
-
 router.get("/people", async (req, res) => {
     try {
         const peopleAll = await UserInfo.find(); 
-        let peopleArr = [];
-        for(var i = 0 ; i < peopleAll.length ; i++ ){
-            const memecount = returnMemecount(peopleAll[i]._id);
-
-            peopleArr.push({...peopleAll[i],"memeCount":memecount});
-        }
-        res.status(200).json(peopleArr);
+        res.status(200).json(peopleAll);
 
     } catch (error) {
         res.status(404).json({ message: error.message })
