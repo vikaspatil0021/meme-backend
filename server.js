@@ -62,11 +62,11 @@ app.use(session({
 
 
 // pasport auth
-// passport.use(new LocalStrategy(User.authenticate()));
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(new LocalStrategy(UserInfo.authenticate()));
 
-passport.use(UserInfo.createStrategy());
+// passport.use(UserInfo.createStrategy());
 passport.serializeUser(UserInfo.serializeUser());
 passport.deserializeUser(UserInfo.deserializeUser());
 
