@@ -111,7 +111,6 @@ router.get("/comments/:storyId", async (req, res) => {
 // });
 
 router.post("/login", passport.authenticate("local",{
-    successRedirect: "/dashboard",
     failureRedirect: "/login"
 }), function(req, res){
     console.log("logged in");
