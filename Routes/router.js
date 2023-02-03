@@ -29,8 +29,13 @@ router.get("/stories", async (req, res) => {
 
 router.get("/people", async (req, res) => {
     try {
-        const peopleAll = await UserInfo.find();
-        res.status(200).json(peopleAll);
+        const peopleAll = await UserInfo.find(); 
+        let peopleArr = [];
+        peopleAll.forEach((person)=>{
+            let memes = StoriesContent.find({username:person.username})
+            peopleArr.push({...person,"memeCount":memes.length})
+        })
+        res.status(200).json(peopleArr);
 
     } catch (error) {
         res.status(404).json({ message: error.message })
