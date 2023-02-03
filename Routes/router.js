@@ -98,7 +98,7 @@ router.post("/login", function (req, res) {
     req.login(user, function (err) {
 
         if (err) {
-            res.json(err.message)
+            res.json({msg:err.message})
 
             console.log(err);
         } else {
