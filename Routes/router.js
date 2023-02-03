@@ -33,9 +33,9 @@ router.get("/people", async (req, res) => {
         let peopleArr = [];
         for(var i = 0 ; i < peopleAll.length ; i++ ){
 
-            let memes = StoriesContent.find({userId:person._id});
+            let memes = StoriesContent.find({userId:peopleAll[i]._id});
             console.log(memes);
-            peopleArr.push({...person,"memeCount":memes.length});
+            peopleArr.push({...peopleAll[i],"memeCount":memes.length});
         }
         res.status(200).json(peopleArr);
 
