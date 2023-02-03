@@ -31,10 +31,12 @@ router.get("/people", async (req, res) => {
     try {
         const peopleAll = await UserInfo.find(); 
         let peopleArr = [];
-        peopleAll.forEach((person)=>{
+        for(var i = 0 ; i < peopleAll.length ; i++ ){
+
             let memes = StoriesContent.find({userId:person._id});
+            console.log(memes);
             peopleArr.push({...person,"memeCount":memes.length});
-        })
+        }
         res.status(200).json(peopleArr);
 
     } catch (error) {
