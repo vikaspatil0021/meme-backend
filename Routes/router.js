@@ -102,7 +102,9 @@ router.post("/login", function (req, res) {
 
             console.log(err);
         } else {
-            passport.authenticate("local")(req, res, function () {
+            passport.authenticate("local",{
+                failureRedirect: "/login"
+              })(req, res, function () {
                 console.log("logged in");
                 res.json({ isAuth: req.isAuthenticated() })
             })
