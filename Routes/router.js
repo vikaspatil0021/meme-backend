@@ -11,7 +11,7 @@ router.get("/isauth", (req, res) => {
     res.json({ isAuth: req.isAuthenticated() })
 
 });
-router.get("/stories", async (req, res) => {
+router.get("/memes", async (req, res) => {
     try {
         if (req.isAuthenticated()) {
 
@@ -38,7 +38,7 @@ router.get("/people", async (req, res) => {
 });
 
 
-router.get("/stories/:storyId", async (req, res) => {
+router.get("/memes/:storyId", async (req, res) => {
     if (req.isAuthenticated()) {
 
         const sessionUser = req.session.passport.user;
