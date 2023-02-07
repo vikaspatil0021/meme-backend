@@ -186,10 +186,12 @@ router.post("/editprofile", async (req, res) => {
         const sessionUser = req.session.passport.user
         if(req.body.imgUrl){
 
-            const respo = await UserInfo.updateOne({ username: sessionUser }, { profileImgURL:req.body.imgUrl});
+            await UserInfo.updateOne({ username: sessionUser }, { profileImgURL:req.body.imgUrl});
+        }else{
+            await UserInfo.updateOne({ username: sessionUser }, { name:  req.body.name, username: req.body.username,email:req.body.email,instaUsername:req.body.instaUsername,bio:req.body.bio });
+
         }
 
-        console.log(respo);
         res.json("updated edit profile")
     } catch (err) {
         res.json(err.message)
