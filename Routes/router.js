@@ -188,7 +188,7 @@ router.post("/editprofile", async (req, res) => {
 
             await UserInfo.updateOne({ username: sessionUser }, { profileImgURL:req.body.imgUrl});
         }else{
-            await UserInfo.updateOne({ username: sessionUser }, { name:  req.body.name, username: req.body.username,email:req.body.email,instaUsername:req.body.instaUsername,bio:req.body.bio });
+            await UserInfo.updateOne({ username: sessionUser }, { name:  req.body.name,email:req.body.email,instaUsername:req.body.instaUsername,bio:req.body.bio });
 
         }
 
