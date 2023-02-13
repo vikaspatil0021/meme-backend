@@ -30,6 +30,9 @@ const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
     origin: "https://my-blog-tt9o.onrender.com",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders:"*"
+
 
 }
 
