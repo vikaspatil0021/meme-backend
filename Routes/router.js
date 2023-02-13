@@ -219,7 +219,7 @@ router.delete("/deletecomment", async (req, res) => {
 router.put("/updateStory", async (req, res) => {
     try {
 
-        await StoriesContent.updateOne({ _id: req.body.Id }, { title: req.body.title, content: req.body.content,imageURL:req.body.imgURL });
+        await StoriesContent.updateOne({ _id: req.body.Id }, { title: req.body.title, content: req.body.content,imageURL:req.body.imageURL });
         res.json("updated")
     } catch (err) {
         res.json(err)
