@@ -201,7 +201,7 @@ router.post("/editprofile", async (req, res) => {
 router.post("/postviews",async (req,res)=>{
     const no = req.body.views + 1
     await StoriesContent.updateOne({ _id: req.body.storyId }, { views:no });
-
+    res.json("postviews updated")
 })
 
 router.delete("/delete", async (req, res) => {
