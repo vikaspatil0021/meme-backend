@@ -5,7 +5,10 @@ const storiesSchema = mongoose.Schema({
     title:String,
     content:String,
     userId:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     likes:[],
     imageURL:String
 })
