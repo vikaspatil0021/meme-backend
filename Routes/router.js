@@ -62,6 +62,7 @@ router.get("/people/:peopleUsername",async (req,res)=>{
 
     }
 
+    
 
     res.json({foundUser:foundUser,fstories:reversedFstories,sessionUser:fUser});
 })
@@ -192,9 +193,7 @@ router.post("/followupdate",async (req, res) => {
     try {
 
         await UserInfo.updateOne({ username: req.body.user }, { followers:req.body.followers});
-        const foundUser = await UserInfo.findOne({ username: req.body.sessionUser });
-        const updateArr = foundUser.followings.push(req.body.user)
-        await UserInfo.updateOne({username:req.body.sessionUser},{})
+        await UserInfo.updateOne({username:req.body.sessionUser},{follwings:req.body.sFollowings})
         res.json("updated")
     } catch (err) {
         res.json(err)
