@@ -193,7 +193,7 @@ router.post("/followupdate",async (req, res) => {
     try {
 
         await UserInfo.updateOne({ username: req.body.user }, { followers:req.body.followers});
-        await UserInfo.updateOne({username:req.body.sessionUser},{follwings:req.body.sFollowings})
+        await UserInfo.updateOne({username:req.body.sessionUser},{followings:req.body.sFollowings})
         res.json("updated")
     } catch (err) {
         res.json(err)
