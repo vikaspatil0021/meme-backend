@@ -81,3 +81,5 @@ app.use(router);
 app.listen(5000 || process.env.PORT, function () {
     console.log("Server has started.");
 });
+
+module.exports = app;
