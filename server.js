@@ -29,7 +29,7 @@ import cors from "cors";
 const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-    origin: "https://meme0021.onrender.com"
+    origin: "https://meme0021.vercel.app"
 
 
 }

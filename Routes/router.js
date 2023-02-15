@@ -296,7 +296,7 @@ router.put("/updateLikes", async (req, res) => {
 router.get("/logout", function (req, res) {
     req.logout(function () {
         console.log("logged out");
-        res.redirect("https://my-blog-tt9o.onrender.com/memes")
+        res.redirect("https://meme0021.vercel.app")
     });
 
 });
