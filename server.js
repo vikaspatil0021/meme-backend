@@ -29,7 +29,7 @@ import cors from "cors";
 const corsOptions = {
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-    origin: ["https://my-blog-tt9o.onrender.com","http://localhost:3000"],
+    origin: "https://my-blog-tt9o.onrender.com"
 
 
 }
