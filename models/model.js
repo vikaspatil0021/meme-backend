@@ -19,7 +19,9 @@ const userSchema = mongoose.Schema({
     name:String,
     profileImgURL:String,
     instaUsername:String,
-    bio:String
+    bio:String,
+    followers:[],
+    followings:[]
 })
 
 const commentSchema = mongoose.Schema({
