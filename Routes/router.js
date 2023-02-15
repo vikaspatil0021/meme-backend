@@ -58,10 +58,12 @@ router.get("/people/:peopleUsername",async (req,res)=>{
     if (req.isAuthenticated()) {
 
         var sessionUser = req.session.passport.user;
+        var fUser = await UserInfo.findOne({ username: sessionUser });
+
     }
 
 
-    res.json({foundUser:foundUser,fstories:reversedFstories,sessionUser:sessionUser});
+    res.json({foundUser:foundUser,fstories:reversedFstories,sessionUser:fUser});
 })
 
 router.get("/dash", async (req, res) => {
@@ -180,6 +182,19 @@ router.post("/profileinfo", async (req, res) => {
 
         const respo = await UserInfo.updateOne({ username: sessionUser }, { name:req.body.fullName,profileImgURL:req.body.profileImgURL,instaUsername:req.body.instaUsername,bio:req.body.bio});
         console.log(respo);
+        res.json("updated")
+    } catch (err) {
+        res.json(err)
+    }
+})
+
+router.post("/followupdate",async (req, res) => {
+    try {
+
+        await UserInfo.updateOne({ username: req.body.user }, { followers:req.body.followers});
+        const foundUser = await UserInfo.findOne({ username: req.body.sessionUser });
+        const updateArr = foundUser.followings.push(req.body.user)
+        await UserInfo.updateOne({username:req.body.sessionUser},{})
         res.json("updated")
     } catch (err) {
         res.json(err)
